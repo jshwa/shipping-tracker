@@ -3,3 +3,5 @@
 <% @senders.uniq.each do |sender| %>
   <h2><a href="/senders/<%= sender.id %>"><%= sender.name %></a></h2>
 <% end %>
+
+<a href="/packages">All Packages</a> | <a href="/logout">Logout</a>
