@@ -5,8 +5,24 @@ class PackagesController < ApplicationController
       current_user
       erb :"packages/index"
     else
-      redirect '/'
+      redirect to '/'
     end
+  end
+
+  get '/packages/new' do
+    if logged_in?
+      erb :"/packages/new"
+    else
+      redirect to '/'
+    end
+  end
+
+  post '/packages' do
+    package = current_user.packages.create(params[:package])
+    sender = current_user.senders.find_or_create_by(name: params[:sender][:name].capitalize)
+    package.sender = sender
+    package.save
+    redirect to "/packages/#{package.id}"
   end
 
   get '/packages/:id' do
@@ -15,10 +31,10 @@ class PackagesController < ApplicationController
       if @package.user == current_user
         erb :'/packages/show'
       else
-        redirect '/packages'
+        redirect to '/packages'
       end
     else
-      redirect '/'
+      redirect to '/'
     end
   end
 
@@ -28,19 +44,18 @@ class PackagesController < ApplicationController
       if @package.user == current_user
         erb :'/packages/edit'
       else
-        redirect '/packages'
+        redirect to '/packages'
       end
     else
-      redirect '/'
+      redirect to '/'
     end
   end
 
   patch '/packages/:id' do
     @package = Package.find(params[:id])
     @package.update(params)
-    redirect "/packages/#{@package.id}"
+    redirect to "/packages/#{@package.id}"
   end
-
 
 
 end
