@@ -63,6 +63,7 @@ class PackagesController < ApplicationController
       package = Package.find(params[:id])
       if package.user == current_user
         package.destroy
+        redirect to "/packages"
       else
         redirect to "/packages"
       end

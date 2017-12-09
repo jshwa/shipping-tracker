@@ -22,7 +22,7 @@
         <td><%= package.tracking_no %></td>
         <td><%= package.sender.name %></td>
         <td><a href="/packages/<%= package.id %>/edit">Edit</a></td>
-        <td><form action="/packages/<%= @package.id %>/delete" method="post">
+        <td><form action="/packages/<%= package.id %>/delete" method="post">
           <input type="hidden" id="hidden" name="_method" value="delete">
           <input type="submit" value="Delete"> </form> </td>
       </tr>
