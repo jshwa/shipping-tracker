@@ -9,4 +9,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "shipping_tracker_secret"
   end
 
+  get '/' do
+    "hello"
+  end
+
 end
