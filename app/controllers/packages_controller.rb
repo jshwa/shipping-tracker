@@ -58,4 +58,17 @@ class PackagesController < ApplicationController
     redirect to "/packages/#{@package.id}"
   end
 
+  delete '/packages/:id/delete' do
+    if logged_in?
+      package = Package.find(params[:id])
+      if package.user == current_user
+        package.destroy
+      else
+        redirect to "/packages"
+      end
+    else
+      redirect to '/'
+    end
+  end
+
 end
