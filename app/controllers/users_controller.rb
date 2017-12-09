@@ -29,5 +29,6 @@ class UsersController < ApplicationController
       redirect '/packages'
     else
       redirect '/login'
+    end
   end
 end
