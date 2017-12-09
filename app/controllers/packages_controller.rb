@@ -10,9 +10,9 @@ class PackagesController < ApplicationController
   end
 
   get '/packages/:id' do
-    package = Package.find(params[:id])
+    @package = Package.find(params[:id])
     if logged_in?
-      if package.user == current_user
+      if @package.user == current_user
         erb :'/packages/show'
       else
         redirect '/packages'
