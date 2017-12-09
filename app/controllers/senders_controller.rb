@@ -9,4 +9,17 @@ class SendersController < ApplicationController
     end
   end
 
+  get '/senders/:id' do
+    if logged_in?
+      @sender = Sender.find(params[:id])
+      if current_user.senders.include?(@sender)
+        erb :'/senders/show'
+      else
+        redirect to '/senders'
+      end
+    else
+      redirect to '/'
+    end
+  end
+
 end
