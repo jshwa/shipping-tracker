@@ -7,5 +7,6 @@
     <tr><th>Tracking No</th><td><%= @package.tracking_no %></td></tr>
     <tr><th>Sender</th><td><%= @package.sender.name %></td></tr>
   </table>
+  <br>
   <td><a href="/packages/<%= @package.id %>/edit">Edit</a></td>
   <td><a href="/packages/<%= @package.id %>/delete">Delete</a></td>
