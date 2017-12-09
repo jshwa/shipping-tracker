@@ -19,8 +19,7 @@ class PackagesController < ApplicationController
 
   post '/packages' do
     package = current_user.packages.create(params[:package])
-    sender = current_user.senders.find_or_create_by(name: params[:sender][:name].capitalize)
-    package.sender = sender
+    package.sender = Sender.find_or_create_by(name: params[:sender][:name].capitalize)
     package.save
     redirect to "/packages/#{package.id}"
   end
@@ -53,9 +52,10 @@ class PackagesController < ApplicationController
 
   patch '/packages/:id' do
     @package = Package.find(params[:id])
-    @package.update(params)
+    @package.update(params[:package])
+    @package.sender = Sender.find_or_create_by(name: params[:sender][:name])
+    @package.save
     redirect to "/packages/#{@package.id}"
   end
-
 
 end
