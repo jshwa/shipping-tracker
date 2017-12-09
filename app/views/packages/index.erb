@@ -1,1 +1,28 @@
-hello, <%= @current_user.username %>
+<h1> Welcome, <%= @current_user.username %> </h2>
+
+<h2>Your packages:</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name </th>
+      <th>Shipping Co.</th>
+      <th>Delivery Date</th>
+      <th>Status</th>
+      <th>Tracking No</th>
+      <th>Sender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @current_user.packages.each do |package| %>
+      <tr>
+        <td><%= package.name %></td>
+        <td><%= package.shipping_co %></td>
+        <td><%= package.delivery_date %></td>
+        <td><%= package.status %></td>
+        <td><%= package.tracking_no %></td>
+        <td><%= package.sender.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<a href="/logout">Logout</a>
