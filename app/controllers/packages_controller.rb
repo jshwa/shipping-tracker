@@ -12,6 +12,7 @@ class PackagesController < ApplicationController
   get '/packages/new' do
     if logged_in?
       current_user
+      @errors = []
       erb :"/packages/new"
     else
       redirect to '/'
@@ -19,20 +20,26 @@ class PackagesController < ApplicationController
   end
 
   post '/packages' do
-    package = current_user.packages.create(params[:package])
-
-    if params[:package][:shipping_co] == ""
-      package.shipping_co = params[:alt_package][:shipping_co]
-    end
-
-    if params[:sender][:name].empty?
-      package.sender = Sender.find_or_create_by(name: params[:alt_sender][:name].capitalize)
+    if params[:sender] == nil
+      current_user
+      @errors = ["You must fill in a sender"]
+      erb :'/packages/new'
     else
-      package.sender = Sender.find_by(name: params[:sender][:name])
-    end
+      package = current_user.packages.create(params[:package])
 
-    package.save
-    redirect to "/packages/#{package.id}"
+      if params[:package][:shipping_co] == ""
+        package.shipping_co = params[:alt_package][:shipping_co]
+      end
+
+      if params[:sender][:name].empty?
+        package.sender = Sender.find_or_create_by(name: params[:alt_sender][:name].capitalize)
+      else
+        package.sender = Sender.find_by(name: params[:sender][:name])
+      end
+
+      package.save
+      redirect to "/packages/#{package.id}"
+    end
   end
 
   get '/packages/:id' do

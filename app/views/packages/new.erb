@@ -1,5 +1,10 @@
 <br>
 <h1>Add a Package</h1>
+<% if @errors.any? %>
+  <%@errors.each do |msg| %>
+    <%= msg %><br>
+  <% end %>
+<% end %>
 <br>
 <form class="newPackage" action="/packages" method="post">
   <table class="singlePack">
