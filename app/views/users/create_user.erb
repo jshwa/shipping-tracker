@@ -7,12 +7,22 @@
 <% end %>
 <br>
 
+
 <form class="signup" action="/signup" method="post">
-  <label for="username">Username: </label>
-  <input type="text" name="username"><br><br>
-  <label for="email">Email: </label>
-  <input type="text" name="email"><br><br>
-  <label for="password">Password: </label>
-  <input type="text" name="password"><br><br>
+  <table class="signup">
+    <tr>
+      <td><label for="username">Username: </label></td>
+      <td><input type="text" name="username"></td>
+    </tr>
+    <tr>
+      <td><label for="email">Email: </label></td>
+      <td><input type="text" name="email"></td>
+    </tr>
+    <tr>
+      <td><label for="password">Password: </label></td>
+      <td><input type="text" name="password"></td>
+    </tr>
+  </table>
+  <br>
   <input type="submit" name="" value="Sign Up">
 </form>
