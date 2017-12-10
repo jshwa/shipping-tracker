@@ -1,28 +1,32 @@
-<h1>Sign Up for Shipping Tracker</h1>
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <h1>Sign Up for Shipping Tracker</h1>
 
-<% if @user.errors.any? %>
-  <%@user.errors.full_messages.each do |msg| %>
-    <%= msg %><br>
-  <% end %>
-<% end %>
-<br>
+    <% if @user.errors.any? %>
+      <%@user.errors.full_messages.each do |msg| %>
+        <%= msg %><br>
+      <% end %>
+    <% end %>
+    <br>
 
 
-<form class="signup" action="/signup" method="post">
-  <table class="signup">
-    <tr>
-      <td><label for="username">Username: </label></td>
-      <td><input type="text" name="username"></td>
-    </tr>
-    <tr>
-      <td><label for="email">Email: </label></td>
-      <td><input type="text" name="email"></td>
-    </tr>
-    <tr>
-      <td><label for="password">Password: </label></td>
-      <td><input type="password" name="password"></td>
-    </tr>
-  </table>
-  <br>
-  <input type="submit" name="" value="Sign Up">
-</form>
+    <form class="signup" action="/signup" method="post">
+      <table class="signup">
+        <tr>
+          <td><label for="username">Username: </label></td>
+          <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email: </label></td>
+          <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+          <td><label for="password">Password: </label></td>
+          <td><input type="password" name="password"></td>
+        </tr>
+      </table>
+      <br>
+      <input type="submit" value="Sign Up" class="btn btn-main">
+    </form>
+  </div>
+</div>
