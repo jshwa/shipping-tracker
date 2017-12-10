@@ -1,5 +1,12 @@
 <h1>Sign Up for Shipping Tracker</h1>
 
+<% if @user.errors.any? %>
+  <%@user.errors.full_messages.each do |msg| %>
+    <%= msg %><br>
+  <% end %>
+<% end %>
+<br>
+
 <form class="signup" action="/signup" method="post">
   <label for="username">Username: </label>
   <input type="text" name="username"><br><br>

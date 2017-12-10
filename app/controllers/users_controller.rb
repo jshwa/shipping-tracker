@@ -4,14 +4,19 @@ class UsersController < ApplicationController
     if logged_in?
       redirect '/packages'
     else
+      @user = User.new
       erb :'/users/create_user'
     end
   end
 
   post '/signup' do
-    user = User.create(params)
-    session[:user_id] = user.id
-    redirect '/packages'
+    @user = User.create(params)
+    if @user.errors.any?
+      erb :'/users/create_user'
+    else
+      session[:user_id] = @user.id
+      redirect '/packages'
+    end
   end
 
   get '/login' do
