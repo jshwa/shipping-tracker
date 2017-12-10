@@ -1,7 +1,7 @@
 <div class="site-wrapper">
   <div class="site-wrapper-inner">
-    <h1>Sign Up for Shipping Tracker</h1>
-
+    <h1 class="display-4">Sign Up for Shipping Tracker</h1>
+    
     <% if @user.errors.any? %>
       <%@user.errors.full_messages.each do |msg| %>
         <%= msg %><br>
