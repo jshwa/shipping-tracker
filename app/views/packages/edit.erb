@@ -1,5 +1,7 @@
 <h1>Edit a Package</h1>
 
+<a href="/packages">All Packages</a> <br><br>
+
 <form class="newPackage" action="/packages/<%= @package.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
   <table class="singlePack">
@@ -13,7 +15,7 @@
           <input type="radio" name="package[shipping_co]" value="FedEx" <%= 'checked' if @package.shipping_co == "Fedex" %>>FedEx</input><br>
           <input type="radio" name="package[shipping_co]" value="DHL" <%= 'checked' if @package.shipping_co == "DHL" %>>DHL</input><br>
           <input type="radio" name="package[shipping_co]" value="USPS" <%= 'checked' if @package.shipping_co == "USPS" %>>USPS<br>
-          <input type="text" name="alt_package[shipping_co]" placeholder= "Other"></td></tr>
+          <input type="text" name="alt_package[shipping_co]" <%="value='#{@package.shipping_co}'" if @package.shipping_co != "UPS" && @package.shipping_co != "DHL" && @package.shipping_co != "FedEx" && @package.shipping_co != "USPS" %> placeholder= "Other"></td></tr>
     </table>
     <br>
     <input type="submit" value="Save">
