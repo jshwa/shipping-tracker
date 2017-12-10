@@ -19,7 +19,7 @@
         <td><%= package.shipping_co %></td>
         <td><%= package.delivery_date %></td>
         <td><%= package.status %></td>
-        <td><%= package.tracking_no %></td>
+        <td><a href="<%= package.tracking_url %>"><%= package.tracking_no %></a></td>
         <td><a href="/senders/<%= package.sender.id %>"><%= package.sender.name %></a></td>
         <td><a href="/packages/<%= package.id %>/edit">Edit</a></td>
         <td><form action="/packages/<%= package.id %>/delete" method="post">
