@@ -4,17 +4,39 @@
 <form class="newPackage" action="/packages/<%= @package.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
   <table class="singlePack">
-      <tr><th>Name</th><td><input type="text" name="package[name]" value="<%= @package.name %>"></td></tr>
-      <tr><th>Delivery Date</th><td><input type="text" name="package[delivery_date]" value="<%= @package.delivery_date %>"></td></tr>
-      <tr><th>Status</th><td><input type="text" name="package[status]" value="<%= @package.status %>"></td></tr>
-      <tr><th>Tracking No</th><td><input type="text" name="package[tracking_no]" value="<%= @package.tracking_no %>"></td></tr>
-      <tr><th>Sender</th><td><input type="text" name="sender[name]" value="<%= @package.sender.name %>"></td></tr>
-      <tr><th>Shipping Co.</th>
+      <tr>
+        <th>Name</th>
+        <td><input type="text" name="package[name]" value="<%= @package.name %>"></td>
+      </tr>
+      <tr>
+        <th>Delivery Date</th>
+        <td><input type="text" name="package[delivery_date]" value="<%= @package.delivery_date %>"></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td><input type="text" name="package[status]" value="<%= @package.status %>"></td>
+      </tr>
+      <tr>
+        <th>Tracking No</th>
+        <td><input type="text" name="package[tracking_no]" value="<%= @package.tracking_no %>"></td>
+      </tr>
+      <tr>
+        <th>Sender</th>
+        <td>
+          <% @current_user.senders.uniq.each do |sender| %>
+          <input type="radio" name="sender[name]" value="<%= sender.name %>" <%='checked' if @package.sender == sender %>><%= sender.name %></input><br>
+          <% end %>
+          <input type="radio" name="sender[name]" value=""><input type="text" name="alt_sender[name]" placeholder="Amazon, Walmart, etc.">
+        </td>
+      </tr>
+      <tr>
+        <th>Shipping Co.</th>
         <td><input type="radio" name="package[shipping_co]" value="UPS" <%= 'checked' if @package.shipping_co == "UPS" %>>UPS</input><br>
           <input type="radio" name="package[shipping_co]" value="FedEx" <%= 'checked' if @package.shipping_co == "Fedex" %>>FedEx</input><br>
           <input type="radio" name="package[shipping_co]" value="DHL" <%= 'checked' if @package.shipping_co == "DHL" %>>DHL</input><br>
           <input type="radio" name="package[shipping_co]" value="USPS" <%= 'checked' if @package.shipping_co == "USPS" %>>USPS<br>
-          <input type="text" name="alt_package[shipping_co]" <%="value='#{@package.shipping_co}'" if @package.shipping_co != "UPS" && @package.shipping_co != "DHL" && @package.shipping_co != "FedEx" && @package.shipping_co != "USPS" %> placeholder= "Other"></td></tr>
+          <input type="text" name="alt_package[shipping_co]" <%="value='#{@package.shipping_co}'" if @package.shipping_co != "UPS" && @package.shipping_co != "DHL" && @package.shipping_co != "FedEx" && @package.shipping_co != "USPS" %> placeholder= "Other"></td>
+        </tr>
     </table>
     <br>
     <input type="submit" value="Save" class="btn btn-main">

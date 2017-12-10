@@ -22,11 +22,11 @@ class PackagesController < ApplicationController
     package = current_user.packages.create(params[:package])
 
     package.shipping_co = params[:alt_package][:shipping_co] if !params[:alt_package][:shipping_co].empty?
-
-    if params[:sender]
-      package.sender = Sender.find_by(name: params[:sender][:name])
-    elsif !params[:alt_sender][:name].empty?
+    
+    if params[:sender][:name].empty?
       package.sender = Sender.find_or_create_by(name: params[:alt_sender][:name].capitalize)
+    else
+      package.sender = Sender.find_by(name: params[:sender][:name])
     end
 
     package.save
@@ -62,7 +62,12 @@ class PackagesController < ApplicationController
   patch '/packages/:id' do
     @package = Package.find(params[:id])
     @package.update(params[:package])
-    @package.sender = Sender.find_or_create_by(name: params[:sender][:name])
+    @package.shipping_co = params[:alt_package][:shipping_co] if !params[:alt_package][:shipping_co].empty?
+    if params[:sender][:name].empty?
+      @package.sender = Sender.find_or_create_by(name: params[:alt_sender][:name].capitalize)
+    else
+      @package.sender = Sender.find_by(name: params[:sender][:name])
+    end
     @package.save
     redirect to "/packages/#{@package.id}"
   end

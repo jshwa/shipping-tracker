@@ -27,7 +27,7 @@
           <% @current_user.senders.uniq.each do |sender| %>
           <input type="radio" name="sender[name]" value="<%= sender.name %>"><%= sender.name %></input><br>
           <% end %>
-          <input type="text" name="alt_sender[name]" placeholder="Amazon, Walmart, etc.">
+          <input type="radio" name="sender[name]" value=""><input type="text" name="alt_sender[name]" placeholder="Amazon, Walmart, etc.">
         </td>
       </tr>
       <tr>
