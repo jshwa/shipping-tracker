@@ -24,25 +24,25 @@
         <th>Sender</th>
         <td>
           <% @current_user.senders.uniq.each do |sender| %>
-          <input type="radio" name="sender[name]" value="<%= sender.name %>" <%='checked' if @package.sender == sender %>><%= sender.name %></input><br>
+          <input type="radio" name="sender[name]" value="<%= sender.name %>" <%='checked' if @package.sender == sender %>> <%= sender.name %></input><br>
           <% end %>
-          <input type="radio" name="sender[name]" value=""><input type="text" name="alt_sender[name]" placeholder="Amazon, Walmart, etc.">
+          <input type="radio" name="sender[name]" value=""> <input type="text" name="alt_sender[name]" placeholder="Amazon, Walmart, etc.">
         </td>
       </tr>
       <tr>
         <th>Shipping Co.</th>
-        <td><input type="radio" name="package[shipping_co]" value="UPS" <%= 'checked' if @package.shipping_co == "UPS" %>>UPS</input><br>
-          <input type="radio" name="package[shipping_co]" value="FedEx" <%= 'checked' if @package.shipping_co == "FedEx" %>>FedEx</input><br>
-          <input type="radio" name="package[shipping_co]" value="DHL" <%= 'checked' if @package.shipping_co == "DHL" %>>DHL</input><br>
-          <input type="radio" name="package[shipping_co]" value="USPS" <%= 'checked' if @package.shipping_co == "USPS" %>>USPS<br>
+        <td><input type="radio" name="package[shipping_co]" value="UPS" <%= 'checked' if @package.shipping_co == "UPS" %>> UPS</input><br>
+          <input type="radio" name="package[shipping_co]" value="FedEx" <%= 'checked' if @package.shipping_co == "FedEx" %>> FedEx</input><br>
+          <input type="radio" name="package[shipping_co]" value="DHL" <%= 'checked' if @package.shipping_co == "DHL" %>> DHL</input><br>
+          <input type="radio" name="package[shipping_co]" value="USPS" <%= 'checked' if @package.shipping_co == "USPS" %>> USPS<br>
 
           <% @current_user.packages.group(:shipping_co).each do |package| %>
               <% if package.shipping_co != "UPS" && package.shipping_co != "FedEx" && package.shipping_co != "DHL" && package.shipping_co != "USPS" %>
-              <input type="radio" name="package[shipping_co]" value="<%= package.shipping_co %>" <%= 'checked' if @package.shipping_co == package.shipping_co %>><%= package.shipping_co %><br>
+              <input type="radio" name="package[shipping_co]" value="<%= package.shipping_co %>" <%= 'checked' if @package.shipping_co == package.shipping_co %>> <%= package.shipping_co %><br>
               <% end %>
           <% end %>
 
-          <input type="radio" name="package[shipping_co]" value=""><input type="text" name="alt_package[shipping_co]" placeholder= "Other"></td>
+          <input type="radio" name="package[shipping_co]" value=""> <input type="text" name="alt_package[shipping_co]" placeholder= "Other"></td>
         </tr>
     </table>
     <br>
