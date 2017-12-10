@@ -4,7 +4,7 @@ class Package < ActiveRecord::Base
 
   def tracking_url
     case self.shipping_co
-    when "FEDEX"
+    when "FedEx"
       "https://www.fedex.com/apps/fedextrack/?action=track&tracknumbers=#{self.tracking_no}"
     when "DHL"
       "http://www.dhl.com/en/express/tracking.html?AWB=#{self.tracking_no}&brand=DHL"
