@@ -2,12 +2,33 @@
 
 <form class="newPackage" action="/packages" method="post">
   <table class="singlePack">
-      <tr><th>Name</th><td><input type="text" name="package[name]"></td></tr>
-      <tr><th>Shipping Co.</th><td><input type="text" name="package[shipping_co]"></td></tr>
-      <tr><th>Delivery Date</th><td><input type="text" name="package[delivery_date]"></td></tr>
-      <tr><th>Status</th><td><input type="text" name="package[status]"></td></tr>
-      <tr><th>Tracking No</th><td><input type="text" name="package[tracking_no]"></td></tr>
-      <tr><th>Sender</th><td><input type="text" name="sender[name]"></td></tr>
+      <tr>
+        <th>Name</th>
+        <td><input type="text" name="package[name]"></td>
+      </tr>
+      <tr>
+        <th>Delivery Date</th>
+        <td><input type="text" name="package[delivery_date]" placeholder="dd/mm/yy"></td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td><input type="text" name="package[status]"></td>
+      </tr>
+      <tr>
+        <th>Tracking No</th><td><input type="text" name="package[tracking_no]"></td>
+      </tr>
+      <tr>
+        <th>Sender</th><td><input type="text" name="sender[name]" placeholder="Amazon, Walmart, etc."></td>
+      </tr>
+      <tr>
+        <th>Shipping Co.</th>
+        <td><input type="radio" name="package[set_shipping_co]" value="UPS">UPS</input><br>
+            <input type="radio" name="package[set_shipping_co]" value="FEDEX">FedEx</input><br>
+            <input type="radio" name="package[set_shipping_co]" value="DHL">DHL</input><br>
+            <input type="radio" name="package[set_shipping_co]" value="USPS">USPS</input><br>
+            <input type="text" name="package[shipping_co]" placeholder= "Other"></td>
+      </tr>
     </table>
+    <br>
     <input type="submit" value="Add">
 </form>
