@@ -1,7 +1,6 @@
+<br>
 <h1>Edit a Package</h1>
-
-<a href="/packages">All Packages</a> <br><br>
-
+<br>
 <form class="newPackage" action="/packages/<%= @package.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
   <table class="singlePack">
@@ -20,3 +19,5 @@
     <br>
     <input type="submit" value="Save" class="btn btn-main">
 </form>
+<br>
+<a href="/packages" class="btn btn-main">All Packages</a> <br><br>

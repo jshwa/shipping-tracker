@@ -73,6 +73,12 @@ a:hover {
    margin-right: 35%;
  }
 
+ table.show {
+   width: 15%;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
  /* buttons */
 
  .btn-main {

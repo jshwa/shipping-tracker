@@ -1,5 +1,6 @@
+<br>
 <h1>Package: <%= @package.name %></h1>
-<a href="/packages">All Packages</a><br><br>
+<br>
 <table class="singlePack">
     <tr><th>Shipping Co.</th><td><%= @package.shipping_co %></td></tr>
     <tr><th>Delivery Date</th><td><%= @package.delivery_date %></td></tr>
@@ -8,9 +9,14 @@
     <tr><th>Sender</th><td><a href="/senders/<%= @package.sender.id %>"><%= @package.sender.name %></a></td></tr>
 </table>
   <br>
-
-<a href="/packages/<%= @package.id %>/edit" class="btn btn-main">Edit</a><br><br>
-<form action="/packages/<%= @package.id %>/delete" method="post">
-    <input type="hidden" id="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete" class="btn btn-logout">
-</form><br>
+<table class="show">
+  <tr>
+    <td><a href="/packages/<%= @package.id %>/edit" class="btn btn-main">Edit</a></td>
+    <td><form action="/packages/<%= @package.id %>/delete" method="post">
+        <input type="hidden" id="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete" class="btn btn-logout">
+    </form></td>
+  </tr>
+</table>
+<br>
+<a href="/packages" class="btn btn-main">All Packages</a>
