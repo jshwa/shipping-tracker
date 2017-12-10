@@ -39,7 +39,14 @@
             <input type="radio" name="package[shipping_co]" value="FedEx">FedEx</input><br>
             <input type="radio" name="package[shipping_co]" value="DHL">DHL</input><br>
             <input type="radio" name="package[shipping_co]" value="USPS">USPS<br>
-            <input type="text" name="alt_package[shipping_co]" placeholder= "Other"></td>
+
+            <% @current_user.packages.group(:shipping_co).each do |package| %>
+                <% if package.shipping_co != "UPS" && package.shipping_co != "FedEx" && package.shipping_co != "DHL" && package.shipping_co != "USPS" %>
+                <input type="radio" name="package[shipping_co]" value="<%= package.shipping_co %>"><%= package.shipping_co %><br>
+                <% end %>
+            <% end %>
+
+            <input type="radio" name="package[shipping_co]" value=""><input type="text" name="alt_package[shipping_co]" placeholder= "Other"></td>
       </tr>
     </table>
     <br>

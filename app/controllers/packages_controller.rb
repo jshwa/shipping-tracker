@@ -21,8 +21,10 @@ class PackagesController < ApplicationController
   post '/packages' do
     package = current_user.packages.create(params[:package])
 
-    package.shipping_co = params[:alt_package][:shipping_co] if !params[:alt_package][:shipping_co].empty?
-    
+    if params[:package][:shipping_co] == ""
+      package.shipping_co = params[:alt_package][:shipping_co]
+    end
+
     if params[:sender][:name].empty?
       package.sender = Sender.find_or_create_by(name: params[:alt_sender][:name].capitalize)
     else
@@ -62,7 +64,11 @@ class PackagesController < ApplicationController
   patch '/packages/:id' do
     @package = Package.find(params[:id])
     @package.update(params[:package])
-    @package.shipping_co = params[:alt_package][:shipping_co] if !params[:alt_package][:shipping_co].empty?
+
+    if params[:package][:shipping_co] == ""
+      @package.shipping_co = params[:alt_package][:shipping_co]
+    end
+
     if params[:sender][:name].empty?
       @package.sender = Sender.find_or_create_by(name: params[:alt_sender][:name].capitalize)
     else
