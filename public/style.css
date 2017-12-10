@@ -21,7 +21,7 @@ table.singlePack {
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #000;
 }
 
 .btn-main {
@@ -79,7 +79,51 @@ fieldset[disabled] .btn-main.active {
   border: .05rem solid #fff;
 }
 
+.btn-logout {
+  color: #000000;
+  background-color: #FFFFFF;
+  border-color: #452470;
+}
 
+.btn-logout:hover,
+.btn-logout:focus,
+.btn-logout:active,
+.btn-logout.active,
+.open .dropdown-toggle.btn-logout {
+  color: #000000;
+  background-color: #C599FF;
+  border-color: #452470;
+}
+
+.btn-logout:active,
+.btn-logout.active,
+.open .dropdown-toggle.btn-logout {
+  background-image: none;
+}
+
+.btn-logout.disabled,
+.btn-logout[disabled],
+fieldset[disabled] .btn-logout,
+.btn-logout.disabled:hover,
+.btn-logout[disabled]:hover,
+fieldset[disabled] .btn-logout:hover,
+.btn-logout.disabled:focus,
+.btn-logout[disabled]:focus,
+fieldset[disabled] .btn-logout:focus,
+.btn-logout.disabled:active,
+.btn-logout[disabled]:active,
+fieldset[disabled] .btn-logout:active,
+.btn-logout.disabled.active,
+.btn-logout[disabled].active,
+fieldset[disabled] .btn-logout.active {
+  background-color: #FFFFFF;
+  border-color: #452470;
+}
+
+.btn-logout .badge {
+  color: #FFFFFF;
+  background-color: #000000;
+}
 /*
  * Base structure
  */

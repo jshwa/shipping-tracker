@@ -26,11 +26,11 @@
         <td><a href="/packages/<%= package.id %>/edit">Edit</a></td>
         <td><form action="/packages/<%= package.id %>/delete" method="post">
           <input type="hidden" id="hidden" name="_method" value="delete">
-          <input type="submit" value="Delete"> </form> </td>
+          <input type="submit" value="Delete" class="btn btn-logout"> </form> </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<a href="/packages/new">Add a Package</a> | <a href="/logout">Logout</a>
+<a href="/packages/new" class="btn btn-main">Add a Package</a> | <a href="/logout" class="btn btn-logout">Logout</a>
   </div>

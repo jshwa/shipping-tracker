@@ -9,8 +9,8 @@
 </table>
   <br>
 
-<a href="/packages/<%= @package.id %>/edit">Edit</a><br><br>
+<a href="/packages/<%= @package.id %>/edit" class="btn btn-main">Edit</a><br><br>
 <form action="/packages/<%= @package.id %>/delete" method="post">
     <input type="hidden" id="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
+    <input type="submit" value="Delete" class="btn btn-logout">
 </form><br>
