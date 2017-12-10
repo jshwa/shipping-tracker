@@ -9,7 +9,7 @@
       </tr>
       <tr>
         <th>Delivery Date</th>
-        <td><input type="text" name="package[delivery_date]" placeholder="dd/mm/yy"></td>
+        <td><input type="text" name="package[delivery_date]" placeholder="yyyy/mm/dd"></td>
       </tr>
       <tr>
         <th>Status</th>
@@ -19,7 +19,19 @@
         <th>Tracking No</th><td><input type="text" name="package[tracking_no]"></td>
       </tr>
       <tr>
-        <th>Sender</th><td><input type="text" name="sender[name]" placeholder="Amazon, Walmart, etc."></td>
+        <td><br></td><td></td>
+      </tr>
+      <tr>
+        <th>Sender</th>
+        <td>
+          <% @current_user.senders.uniq.each do |sender| %>
+          <input type="radio" name="sender[name]" value="<%= sender.name %>"><%= sender.name %></input><br>
+          <% end %>
+          <input type="text" name="alt_sender[name]" placeholder="Amazon, Walmart, etc.">
+        </td>
+      </tr>
+      <tr>
+        <td><br></td><td></td>
       </tr>
       <tr>
         <th>Shipping Co.</th>

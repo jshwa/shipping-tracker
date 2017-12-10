@@ -11,6 +11,7 @@ class PackagesController < ApplicationController
 
   get '/packages/new' do
     if logged_in?
+      current_user
       erb :"/packages/new"
     else
       redirect to '/'
@@ -19,8 +20,15 @@ class PackagesController < ApplicationController
 
   post '/packages' do
     package = current_user.packages.create(params[:package])
-    package.shipping_co = params[:alt_package][:shipping_co] if !params[:alt_package].empty?
-    package.sender = Sender.find_or_create_by(name: params[:sender][:name].capitalize)
+
+    package.shipping_co = params[:alt_package][:shipping_co] if !params[:alt_package][:shipping_co].empty?
+
+    if params[:sender]
+      package.sender = Sender.find_by(name: params[:sender][:name])
+    elsif !params[:alt_sender][:name].empty?
+      package.sender = Sender.find_or_create_by(name: params[:alt_sender][:name].capitalize)
+    end
+
     package.save
     redirect to "/packages/#{package.id}"
   end
