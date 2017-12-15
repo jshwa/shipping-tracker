@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210020302) do
+ActiveRecord::Schema.define(version: 20171214233525) do
 
   create_table "packages", force: :cascade do |t|
     t.string "name"
     t.string "shipping_co"
     t.date "delivery_date"
     t.string "status"
-    t.integer "tracking_no", limit: 8
+    t.integer "tracking_no", limit: 40
     t.integer "user_id"
     t.integer "sender_id"
   end
