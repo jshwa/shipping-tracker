@@ -91,7 +91,7 @@ class PackagesController < ApplicationController
   delete '/packages/:id/delete' do
     if logged_in?
       if @package = current_user.packages.find_by(id: params[:id])
-        package.destroy
+        @package.destroy
         redirect to "/packages"
       else
         redirect to "/packages"
